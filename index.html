@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CPNU 2025 - YR Aprova | Realidade Brasileira</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.7;
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Cabeçalho Fixo */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #ff6600;
+      color: white;
+      padding: 16px 20px;
+      text-align: center;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .header h1 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .header .logo {
+      color: #ffffff;
+      font-weight: 800;
+    }
+
+    .header p {
+      font-size: 0.85rem;
+      margin: 4px 0 0;
+      opacity: 0.95;
+    }
+
+    /* Conteúdo com margem para cabeçalho fixo */
+    .content {
+      margin-top: 130px;
+      padding-bottom: 60px;
+    }
+
+    /* Títulos */
+    h2 {
+      font-size: 1.4rem;
+      color: #1e3a8a;
+      margin: 60px 0 20px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #3b82f6;
+      page-break-before: always;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      color: #1e40af;
+      margin: 30px 0 12px 0;
+      font-weight: 600;
+    }
+
+    h4 {
+      font-size: 1.1rem;
+      color: #1e293b;
+      margin: 20px 0 10px 0;
+      font-weight: 600;
+    }
+
+    /* Texto comum */
+    p {
+      margin-bottom: 14px;
+      font-size: 0.98rem;
+    }
+
+    /* Sumário */
+    .toc {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .toc h2 {
+      margin: 0 0 16px 0;
+      border: none;
+      font-size: 1.3rem;
+      color: #1e3a8a;
+    }
+
+    .toc ul {
+      list-style: none;
+      font-size: 0.96rem;
+    }
+
+    .toc li {
+      margin-bottom: 8px;
+    }
+
+    .toc a {
+      color: #1e40af;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .toc a:hover {
+      text-decoration: underline;
+      color: #0284c7;
+    }
+
+    .toc ul ul {
+      margin-left: 20px;
+      margin-top: 6px;
+    }
+
+    .toc .section {
+      font-weight: 600;
+      color: #1e3a8a;
+      margin: 10px 0 6px 0;
+    }
+
+    /* Introdução */
+    .introduction {
+      background: #dbeafe;
+      border-left: 4px solid #3b82f6;
+      padding: 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 30px;
+      font-size: 0.98rem;
+      color: #1e3a8a;
+    }
+
+    /* Destaque */
+    .highlight {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 14px 18px;
+      margin: 20px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.96rem;
+      color: #92400e;
+    }
+
+    /* Tabelas */
+    .table-container {
+      overflow-x: auto;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      background: #ffffff;
+    }
+
+    th {
+      background-color: #3b82f6;
+      color: #ffffff;
+      padding: 12px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #d1d5db;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f1f5f9;
+    }
+
+    /* Listas */
+    ul, ol {
+      margin: 12px 0 12px 24px;
+      font-size: 0.98rem;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* Questões */
+    .question {
+      margin: 30px 0;
+      padding: 16px;
+      background: #ffffff;
+      border: 1px solid #e0e7ff;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .question h4 {
+      color: #1e293b;
+      margin-bottom: 10px;
+    }
+
+    .options {
+      list-style: none;
+      margin: 10px 0 10px 0;
+    }
+
+    .options li {
+      margin-bottom: 8px;
+      padding-left: 24px;
+      position: relative;
+      font-size: 0.96rem;
+    }
+
+    .options li::before {
+      content: attr(data-letter ")";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-weight: 600;
+      color: #f59e0b;
+    }
+
+    .answer {
+      margin-top: 10px;
+      font-weight: 600;
+      color: #10b981;
+      font-size: 0.96rem;
+    }
+
+    /* Infográficos */
+    .infographic {
+      background: #f1f5f9;
+      border: 1px dashed #64748b;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 8px;
+      text-align: center;
+      font-style: italic;
+      color: #475569;
+    }
+
+    /* Simulado Link */
+    .simulado-box {
+      background: #ecfdf5;
+      border: 1px solid #059669;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .simulado-box h4 {
+      color: #059669;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .simulado-box a {
+      color: #059669;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .simulado-box a:hover {
+      text-decoration: underline;
+    }
+
+    /* Rodapé */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      page-break-before: avoid;
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      body {
+        padding: 15px;
+        font-size: 0.95rem;
+      }
+      h2 { font-size: 1.3rem; }
+      h3 { font-size: 1.1rem; }
+      .introduction, .highlight {
+        font-size: 0.92rem;
+      }
+      .toc {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div style="text-align: center; margin-top: 100px;">
+  <img src="capa2 - Apostila.png" alt="Capa Apostila Bloco 09" style="max-width:100%; height:auto;">
+</div>
+  <!-- Cabeçalho Fixo -->
+  <div class="header">
+    <h1>CPNU 2025 - <span class="logo">YR Aprova</span></h1>
+    <p>Realidade Brasileira – Nível Médio / Banca FGV</p>
+  </div>
+
+  <!-- Conteúdo Principal -->
+  <div class="content">
+
+    <!-- Sumário Interativo -->
+    <div class="toc">
+      <h2>📋 Sumário Interativo</h2>
+      <ul>
+        <li class="section">1. Dinâmica Social no Brasil</li>
+        <ul>
+          <li><a href="#estratificacao">1.1. Estratificação e Desigualdade</a></li>
+          <li><a href="#grupos">1.2. Grupos Vulnerabilizados</a></li>
+          <li><a href="#questao1">Questão 1 – Dinâmica Social</a></li>
+        </ul>
+
+        <li class="section">2. Desenvolvimento Econômico</li>
+        <ul>
+          <li><a href="#concentracao">2.1. Concentração de Renda</a></li>
+          <li><a href="#politicas">2.2. Políticas de Redistribuição</a></li>
+          <li><a href="#questao2">Questão 2 – Economia</a></li>
+        </ul>
+
+        <li class="section">3. Meio Ambiente e Sustentabilidade</li>
+        <ul>
+          <li><a href="#desmatamento">3.1. Desmatamento e Clima</a></li>
+          <li><a href="#politicas-ambientais">3.2. Políticas Públicas</a></li>
+        </ul>
+
+        <li class="section">4. Matriz Energética</li>
+        <ul>
+          <li><a href="#fontes">4.1. Fontes Renováveis e Não Renováveis</a></li>
+          <li><a href="#transicao">4.2. Transição Energética</a></li>
+          <li><a href="#questao3">Questão 3 – Energia</a></li>
+        </ul>
+
+        <li class="section">5. Desenvolvimento Urbano</li>
+        <ul>
+          <li><a href="#urbanizacao">5.1. Metropolização e Problemas Urbanos</a></li>
+          <li><a href="#questao4">Questão 4 – Cidades</a></li>
+        </ul>
+
+        <li class="section">6. Infraestrutura Nacional</li>
+        <ul>
+          <li><a href="#projetos">6.1. Principais Projetos de Logística</a></li>
+        </ul>
+
+        <li class="section">7. Desigualdades Regionais</li>
+        <ul>
+          <li><a href="#regioes">7.1. PIB e IDH por Região</a></li>
+          <li><a href="#questao5">Questão 5 – Regiões</a></li>
+        </ul>
+
+        <li class="section">✅ Simulado Final</li>
+        <ul>
+          <li><a href="#simulado">Questões 1 a 3 – Revisão Geral</a></li>
+        </ul>
+      </ul>
+    </div>
+
+    <!-- Introdução -->
+    <div class="introduction">
+      Bem-vindo(a) ao módulo <strong>Realidade Brasileira</strong> da apostila CPNU 2025! Este conteúdo foi desenvolvido para oferecer uma visão abrangente e crítica da realidade socioeconômica, ambiental e urbana do Brasil, com foco nos temas mais cobrados em concursos da banca FGV. Aqui, você encontrará dados atualizados, análises estruturadas, tabelas comparativas e exemplos práticos que facilitam a compreensão e fixação dos conceitos. Prepare-se para dominar um dos pilares do edital com clareza e profundidade.
+    </div>
+
+    <!-- Capítulo 1 -->
+    <h2 id="dinamica-social">1. Dinâmica Social no Brasil: Estratificação, Desigualdade e Exclusão</h2>
+    <p>A sociedade brasileira é marcada por profundas desigualdades estruturais, resultado de um passado colonial, escravocrata e de concentração de terras e renda. Apesar de avanços, o Brasil ainda figura entre os países mais desiguais do mundo.</p>
+
+    <h3 id="estratificacao">1.1. Estratificação e Desigualdade</h3>
+    <p>O Brasil possui uma pirâmide social assimétrica, com uma pequena elite concentrando grande parte da riqueza, enquanto uma parcela significativa da população vive em situação de vulnerabilidade. O coeficiente de Gini, que mede a desigualdade, é de 0,53, muito acima do recomendado pela ONU (0,40).</p>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Índice</th>
+            <th>Brasil (2023)</th>
+            <th>Média Mundial</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Coeficiente de Gini (renda)</td>
+            <td>0,53</td>
+            <td>0,44</td>
+          </tr>
+          <tr>
+            <td>População abaixo da linha da pobreza</td>
+            <td>33 milhões</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>População em extrema pobreza</td>
+            <td>18 milhões</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 id="grupos">1.2. Grupos Vulnerabilizados</h3>
+    <p>O Brasil enfrenta desafios na inclusão de grupos historicamente marginalizados:</p>
+    <ul>
+      <li><strong>Crianças e adolescentes:</strong> 28% vivem em lares com renda per capita abaixo da linha da pobreza (UNICEF).</li>
+      <li><strong>Idosos:</strong> Crescimento acelerado da população acima de 60 anos (26% até 2060). Apenas 45% recebem aposentadoria integral.</li>
+      <li><strong>LGBTQIA+:</strong> 63% das travestis não completam o ensino fundamental (Igualdade Brasil). Altos índices de violência e suicídio.</li>
+      <li><strong>Pessoas com deficiência:</strong> 46% estão fora do mercado de trabalho (Pnad). Barreiras físicas e atitudinais persistem.</li>
+      <li><strong>Povos indígenas:</strong> 305 etnias, 279 línguas, mas 40% vivem em terras não demarcadas. Conflitos por território são frequentes.</li>
+      <li><strong>Quilombolas:</strong> 3 mil comunidades identificadas, menos de 25% têm títulos de terra. Sofrem com falta de acesso a serviços básicos.</li>
+      <li><strong>Pessoas em situação de rua:</strong> Cerca de 28.000 em São Paulo (Censo 2023). Falta de políticas de reinserção social.</li>
+    </ul>
+
+    <div class="highlight">
+      Dado relevante: Negros ganham, em média, 58% do salário de brancos (IBGE, 2023). A desigualdade racial é estrutural.
+    </div>
+
+    <div class="question" id="questao1">
+      <h4>Questão 1 (FGV - Adaptada)</h4>
+      <p>Assinale a alternativa correta sobre a dinâmica social no Brasil:</p>
+      <ul class="options">
+        <li data-letter="a">A desigualdade racial é um fenômeno superado nas últimas décadas.</li>
+        <li data-letter="b">A população quilombola possui ampla titulação fundiária garantida por lei.</li>
+        <li data-letter="c">O coeficiente de Gini do Brasil é inferior à média da OCDE.</li>
+        <li data-letter="d">A maioria dos idosos no Brasil vive em lares de longa permanência.</li>
+        <li data-letter="e">Há desigualdade significativa de renda entre trabalhadores brancos e negros.</li>
+      </ul>
+      <p class="answer">Gabarito: E</p>
+    </div>
+
+    <!-- Capítulo 2 -->
+    <h2 id="desenvolvimento-economico">2. Desenvolvimento Econômico e Concentração de Renda</h2>
+    <p>O Brasil é a 9ª maior economia do mundo (PIB de US$ 2,1 trilhões em 2023), mas a riqueza é altamente concentrada. O modelo econômico baseia-se em exportações de commodities, tornando-o vulnerável a flutuações internacionais.</p>
+
+    <h3 id="concentracao">2.1. Concentração de Renda e Riqueza</h3>
+    <p>Os 1% mais ricos detêm 28% da renda nacional. Em 2023, 10% da população concentrou 43% da renda total. A riqueza é ainda mais desigual: os 1% mais ricos possuem 46% do patrimônio privado.</p>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Percentil</th>
+            <th>Participação na Renda</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1% mais rico</td>
+            <td>28%</td>
+          </tr>
+          <tr>
+            <td>10% mais ricos</td>
+            <td>43%</td>
+          </tr>
+          <tr>
+            <td>50% mais pobres</td>
+            <td>13%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 id="politicas">2.2. Políticas de Redistribuição</h3>
+    <p>Programas como o <strong>Auxílio Brasil</strong> reduziram a pobreza, mas não eliminaram a desigualdade estrutural. O sistema tributário é regressivo, com maior carga sobre consumo do que sobre renda e patrimônio. A reforma tributária é um tema central nas discussões sobre justiça social.</p>
+
+    <div class="question" id="questao2">
+      <h4>Questão 2 (FGV)</h4>
+      <p>Qual das alternativas melhor caracteriza a concentração de renda no Brasil?</p>
+      <ul class="options">
+        <li data-letter="a">A renda é distribuída de forma equitativa entre todas as regiões.</li>
+        <li data-letter="b">Mais da metade da renda nacional é detida pela metade mais pobre da população.</li>
+        <li data-letter="c">O sistema tributário é progressivo e favorece a redistribuição.</li>
+        <li data-letter="d">Os 10% mais ricos concentram menos de 30% da renda.</li>
+        <li data-letter="e">Há alta concentração de renda, com os 10% mais ricos detendo 43% do total.</li>
+      </ul>
+      <p class="answer">Gabarito: E</p>
+    </div>
+
+    <!-- Capítulo 3 -->
+    <h2 id="meio-ambiente">3. Desenvolvimento Sustentável e Meio Ambiente</h2>
+    <p>O Brasil possui 60% da biodiversidade da América do Sul e é um dos maiores sumidouros de carbono do planeta. No entanto, enfrenta graves desafios ambientais, como desmatamento, queimadas e mudanças climáticas.</p>
+
+    <h3 id="desmatamento">3.1. Desmatamento e Mudança do Clima</h3>
+    <p>O desmatamento na Amazônia atingiu 1,3 mil km² em 2023 (INPE). A agropecuária é responsável por 70% das emissões de GEE no país. O Brasil tem metas de neutralidade de carbono até 2050, mas enfrenta desafios de fiscalização e governança ambiental.</p>
+
+    <h3 id="politicas-ambientais">3.2. Políticas Públicas</h3>
+    <p>O país é signatário do Acordo de Paris. Programas como o <strong>Plano Amazônia Sustentável</strong> e o <strong>PPCDAm</strong> buscam conciliar conservação e desenvolvimento. A criação de unidades de conservação e a regularização fundiária são estratégias-chave.</p>
+
+    <div class="infographic">
+      [Infográfico: Evolução do desmatamento na Amazônia (2019–2023)]
+    </div>
+
+    <!-- Capítulo 4 -->
+    <h2 id="matriz-energetica">4. Matriz Energética e Transição Energética</h2>
+    <p>O Brasil possui uma das matrizes mais limpas do mundo, com 48% de fontes renováveis (2023). A hidrelétrica é a principal fonte, mas a dependência hídrica torna o sistema vulnerável à seca.</p>
+
+    <h3 id="fontes">4.1. Fontes Renováveis e Não Renováveis</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Fonte</th>
+            <th>Participação (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hidrelétrica</td>
+            <td>59%</td>
+          </tr>
+          <tr>
+            <td>Eólica</td>
+            <td>12%</td>
+          </tr>
+          <tr>
+            <td>Solar</td>
+            <td>5%</td>
+          </tr>
+          <tr>
+            <td>Fóssil</td>
+            <td>24%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 id="transicao">4.2. Transição Energética</h3>
+    <p>A transição energética envolve a expansão de fontes limpas, eficiência energética e modernização da rede elétrica. A energia solar cresce rapidamente, com aumento de autoconsumo residencial e comercial.</p>
+    <div class="highlight">
+      A transição energética exige investimentos em redes inteligentes, armazenamento e eficiência energética.
+    </div>
+
+    <div class="question" id="questao3">
+      <h4>Questão 3 (FGV)</h4>
+      <p>Qual fonte renovável tem apresentado maior crescimento percentual nos últimos 5 anos?</p>
+      <ul class="options">
+        <li data-letter="a">Hidrelétrica</li>
+        <li data-letter="b">Biomassa</li>
+        <li data-letter="c">Solar</li>
+        <li data-letter="d">Carvão mineral</li>
+        <li data-letter="e">Petróleo</li>
+      </ul>
+      <p class="answer">Gabarito: C</p>
+    </div>
+
+    <!-- Capítulo 5 -->
+    <h2 id="desenvolvimento-urbano">5. Desenvolvimento Urbano Brasileiro</h2>
+    <p>87% da população vive em áreas urbanas. O processo de metropolização gerou grandes centros com sérios problemas de infraestrutura, como moradia, transporte e saneamento.</p>
+
+    <h3 id="urbanizacao">5.1. Problemas Urbanos</h3>
+    <ul>
+      <li><strong>Falta de moradia digna:</strong> 2,3 milhões de domicílios inadequados. Favelas e ocupações urbanas são comuns.</li>
+      <li><strong>Transporte público precário:</strong> 60% dos usuários gastam mais de 2h por dia no deslocamento. Baixa cobertura e qualidade.</li>
+      <li><strong>Violência urbana:</strong> 22,5 homicídios por 100 mil habitantes (2023). Desigualdade e exclusão social são fatores estruturais.</li>
+      <li><strong>Poluição e ilhas de calor:</strong> Grandes centros enfrentam problemas ambientais graves.</li>
+    </ul>
+
+    <div class="infographic">
+      [Infográfico: Mapa de favelas nas 10 maiores cidades do Brasil]
+    </div>
+
+    <div class="question" id="questao4">
+      <h4>Questão 4 (FGV)</h4>
+      <p>Qual é a principal causa dos problemas urbanos nas grandes metrópoles brasileiras?</p>
+      <ul class="options">
+        <li data-letter="a">Baixa densidade populacional</li>
+        <li data-letter="b">Planejamento urbano eficiente</li>
+        <li data-letter="c">Crescimento desordenado e falta de infraestrutura</li>
+        <li data-letter="d">Elevado investimento em habitação social</li>
+        <li data-letter="e">Redução da migração campo-cidade</li>
+      </ul>
+      <p class="answer">Gabarito: C</p>
+    </div>
+
+    <!-- Capítulo 6 -->
+    <h2 id="infraestrutura">6. Desenvolvimento Nacional e Infraestrutura</h2>
+    <p>Investimentos em logística (portos, ferrovias, rodovias) são cruciais para o crescimento econômico e a redução de custos. O Brasil possui um território vasto e desigual, exigindo integração regional.</p>
+
+    <h3 id="projetos">6.1. Principais Projetos</h3>
+    <ul>
+      <li><strong>Ferrogrão:</strong> Ferrovia de MT a PA para escoamento da produção agrícola.</li>
+      <li><strong>Transnordestina:</strong> Integração de portos do Nordeste.</li>
+      <li><strong>Concessões:</strong> Aeroportos, portos e rodovias.</li>
+      <li><strong>Trem de Alta Velocidade:</strong> Projeto em discussão entre RJ, SP e Campinas.</li>
+    </ul>
+
+    <!-- Capítulo 7 -->
+    <h2 id="desigualdades-regionais">7. Desigualdades Regionais</h2>
+    <p>O Nordeste e o Norte concentram os menores IDHs, enquanto o Sudeste e o Sul apresentam maior desenvolvimento. Essas disparidades são resultado de fatores históricos, econômicos e geográficos.</p>
+
+    <h3 id="regioes">7.1. PIB e IDH por Região</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Região</th>
+            <th>PIB per capita (R$)</th>
+            <th>IDH Médio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sudeste</td>
+            <td>45.000</td>
+            <td>0,782</td>
+          </tr>
+          <tr>
+            <td>Sul</td>
+            <td>42.500</td>
+            <td>0,765</td>
+          </tr>
+          <tr>
+            <td>Centro-Oeste</td>
+            <td>40.000</td>
+            <td>0,758</td>
+          </tr>
+          <tr>
+            <td>Nordeste</td>
+            <td>24.000</td>
+            <td>0,688</td>
+          </tr>
+          <tr>
+            <td>Norte</td>
+            <td>22.000</td>
+            <td>0,674</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>As políticas de desenvolvimento regional, como os PACs e os fundos constitucionais, buscam reduzir essas disparidades.</p>
+
+    <!-- Link para Simulado -->
+<div class="simulado-box" style="border: 2px solid #ff6600; padding: 20px; border-radius: 8px; background: #fff8f2; margin: 30px 0;">
+  <h4 style="margin-top:0; font-size: 20px;">🚀 Acesse o Simulado Completo Online!</h4>
+  <p>Teste seus conhecimentos com o simulado oficial da <strong>YR Aprova</strong>, com 40 questões no estilo da banca FGV.</p>
+  <p>
+    <a href="https://encurtador.com.br/2fRg9" target="_blank" style="color:#fff; background:#ff6600; padding:10px 16px; text-decoration:none; border-radius:6px; font-weight:bold;">
+      Clique aqui para acessar o simulado →
+    </a>
+  </p>
+</div>
+
+    <!-- Rodapé -->
+    <div class="footer">
+      Apostila CPNU 2025 – YR Aprova | Realidade Brasileira – Nível Médio<br>
+      © 2025 YR Aprova. Todos os direitos reservados.<br>
+      Conteúdo atualizado para concursos da banca FGV.
+    </div>
+
+  </div>
+</body>
+</html>
